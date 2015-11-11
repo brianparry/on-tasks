@@ -8,6 +8,7 @@ var fs = require('fs');
 describe("ipmi-parser", function() {
     var parser;
     var ipmiOutMock;
+    var corruptIpmiOutMock;
     var ipmiDriveHealthOutMock;
 
     before('ipmi parser before', function() {
@@ -19,6 +20,10 @@ describe("ipmi-parser", function() {
 
         ipmiOutMock = fs
             .readFileSync(__dirname+'/ipmi-sdr-v-output')
+            .toString();
+
+        corruptIpmiOutMock = fs
+            .readFileSync(__dirname+'/corrupt-ipmi-sdr-v-output')
             .toString();
 
         ipmiDriveHealthOutMock = fs
@@ -74,6 +79,11 @@ describe("ipmi-parser", function() {
                     expect(sensor.status).to.equal(expectedValue)
                 }
             });
+        });
+
+        it("should omit corrupt sdr entries", function() {
+            var sensors = parser.parseSdrData(corruptIpmiOutMock);
+            sensors.should.have.length(91);
         });
 
         it('should parse ipmitool chassis status raw data output', function() {
