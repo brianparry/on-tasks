@@ -83,6 +83,7 @@ describe("ipmi-parser", function() {
 
         it("should omit corrupt sdr entries", function() {
             var sensors = parser.parseSdrData(corruptIpmiOutMock);
+            // There are exactly 91 valid SDRs in the 'corrupt' output
             sensors.should.have.length(91);
         });
 
