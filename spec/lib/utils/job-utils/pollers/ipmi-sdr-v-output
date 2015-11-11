@@ -691,8 +691,8 @@ Sensor ID              : Volt_P12V (0xd2)
 Sensor ID              : Fan_SYS0_1 (0xc0)
  Entity ID             : 29.1 (Fan Device)
  Sensor Type (Threshold)  : Fan (0x04)
- Sensor Reading        : 4600 (+/- 0) % RPM
- Status                : ok
+ Sensor Reading        : 400 (+/- 0) % RPM
+ Status                : Lower Critical
  Lower critical        : 600.000
  Positive Hysteresis   : Unspecified
  Negative Hysteresis   : Unspecified
@@ -1013,8 +1013,11 @@ Sensor ID              : HDD1 (0x46)
 Sensor ID              : HDD2 (0x47)
  Entity ID             : 26.2 (Disk Drive Bay)
  Sensor Type (Discrete): Drive Slot / Bay (0x0d)
- Sensor Reading        : 0h
+ Sensor Reading        : ffh
  Event Message Control : Per-threshold
+ States Asserted       : Drive Slot
+                         [Hot Spare]
+                         [In Critical Array]
  Assertions Enabled    : Drive Slot
                          [Drive Present]
                          [Drive Fault]
